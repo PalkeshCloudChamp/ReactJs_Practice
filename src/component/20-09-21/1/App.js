@@ -1,10 +1,12 @@
 import React,{Component} from "react";
-import BodyDom from "./bodyDom";
-import HeadersDom from "./headersDom";
+import TableDom from './tableDom'
+// import BodyDom from "./bodyDom";
+// import HeadersDom from "./headersDom";
 import './App.css'
 class App extends Component {
-headers = ['ProductId','ProductName','Manufacturer', 'Price']
-data = [
+state = {
+    headers : ['ProductId','ProductName','Manufacturer', 'Price'],
+data : [
     {ProductId : 1 , ProductName : 'Product1' , Manufacturer : 'Manufacturer1' , Price : 10000},
     {ProductId : 2 , ProductName : 'Product2' , Manufacturer : 'Manufacturer2' , Price : 90000},
     {ProductId : 3 , ProductName : 'Product3' , Manufacturer : 'Manufacturer3' , Price : 70000},
@@ -17,8 +19,6 @@ data = [
     {ProductId : 10 , ProductName : 'Product10' , Manufacturer : 'Manufacturer10' , Price : 20000},
     
 ]
-state = {
-    
 }
 popTheElement=(ele)=>{
     console.log(parseInt(ele.target.id)+1)
@@ -27,28 +27,7 @@ render(){
     return(
         <div>
             <center>
-            <table className = 'table table-striped table-hover'>
-                <thead>
-                    {
-                        this.headers.map((item,pos)=>{
-                            return (<HeadersDom val = {item} key = {pos} headers = {this.headers}/>)
-                        })
-                    }
-                    <th>Delete</th>
-                </thead>
-                <tbody>
-                    {
-                        this.data.map((item,pos)=>{
-                            return(
-                                <tr>
-                            <BodyDom val = {item} key = {pos}/>
-                            <td><button value = 'Delete' id={pos} onClick={this.popTheElement}>Delete</button></td>
-                            </tr>
-                            )
-                        })
-                    }
-                </tbody>
-            </table>
+                <TableDom headers = {this.state.headers} body={this.state.data}/>
             </center>
         </div>
     )

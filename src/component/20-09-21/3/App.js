@@ -14,25 +14,11 @@ class App extends Component {
             <center>
                 <h1>Radio Buttons</h1>
                 <div>
-                    {
-                        this.cont.map((item,pos)=>{
-                            return (
-                                <RadioDom key = {pos} name='rbName' val = {item}/>
-                            )
-                        })
-                    }
+                    <RadioDom name='rbName' val = {this.cont}/>
                 </div>
                 <h1>CheckBoxes</h1>
                 <div>
-                    {
-                        this.cont.map((item,pos)=>{
-                            // console.log(item)
-                            return (
-                                <CheckBoxDom key = {pos} name='rbName' val = {item}/>
-                            )
-                        })
-                        
-                    }
+                <CheckBoxDom name='rbName' val = {this.cont}/>
                 </div>
             </center>
          );
