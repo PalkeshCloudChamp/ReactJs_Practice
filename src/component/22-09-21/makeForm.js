@@ -14,11 +14,19 @@ class MakeForm extends Component {
     validateUserName = evt => {
         this.setState((prevState, prevProp) => {
             console.log(prevState.name.length)
-            if (prevState.name.length < 4) {
+            if (evt.target.value.length < 5) {
+                if(evt.target.value.length === 0){  
+                return ({
+                    nameErrorVisi: false,
+                    name: evt.target.value
+                })
+                }
+                else{
                 return ({
                     nameErrorVisi: true,
                     name: evt.target.value
                 })
+            }
             }
             else {
                 return ({
@@ -31,7 +39,7 @@ class MakeForm extends Component {
 
     ValidateEmail = evt => {
         var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if (evt.target.value.match(mailformat)) {
+        if (evt.target.value.match(mailformat) || evt.target.value.length === 0) {
             this.setState((prevState, prevProp) => {
                 return ({
                     email: evt.target.value,
@@ -52,7 +60,7 @@ class MakeForm extends Component {
 
     ValidatePassword = evt => {
         var passformat = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
-        if (evt.target.value.match(passformat)) {
+        if (evt.target.value.match(passformat) || evt.target.value.length === 0) {
             this.setState((prevState, prevProp) => {
                 return ({
                     password: evt.target.value,
