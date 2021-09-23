@@ -64,7 +64,7 @@ class TableDom extends Component {
                                     <button value={item['ProductId']} onClick={this.deleteEle}>Delete</button>
                                     </tr>
                                 )
-                            })
+                            }) 
                         }
                     </tbody>
                 </table>
