@@ -3,7 +3,11 @@ import React,{Component} from "react";
 class TableDom extends Component {
         state = { 
             data : this.props.body,
-            headers : this.props.headers
+            headers : this.props.headers,
+            selectedId : "",
+            selectedName : "",
+            selectedManu: "",
+            selectedPrice : ""
          }
 
     deleteEle = evt =>{
@@ -23,6 +27,14 @@ class TableDom extends Component {
             return({data:temp});
         })
     }
+
+    getValues = (items) =>{
+        this.setState({selectedId : items.ProductId})
+        this.setState({selectedName : items.ProductName})
+        this.setState({selectedManu : items.Manufacturer})
+        this.setState({selectedPrice : items.Price})
+    }
+
     render() { 
         return (
         <>
@@ -42,7 +54,7 @@ class TableDom extends Component {
                     <tbody>
                         {
                             this.state.data.map((item,pos)=>{
-                                return(<tr>
+                                return(<tr onClick={()=>this.getValues(item)}>
                                     {this.props.headers.map((it,po)=>{
                                         return(
                                             <td>{item[it]}</td>
@@ -56,6 +68,12 @@ class TableDom extends Component {
                         }
                     </tbody>
                 </table>
+                <div className="container" style={{textAlign :'left'}}>
+                        Id : - {this.state.selectedId}<br/>
+                        Name : - {this.state.selectedName}<br/>
+                        Manufacturer : - {this.state.selectedManu}<br/>
+                        Price : - {this.state.selectedPrice}<br/>
+                </div>
         </>  
     );
     }
