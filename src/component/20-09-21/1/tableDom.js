@@ -14,6 +14,15 @@ class TableDom extends Component {
             return({data : prevState.data})
         })
     }
+    sortOnThis = evt =>{
+        this.setState((prevState,prevProp)=>{
+            let temp = prevState.data
+            console.log(evt.target.innerText)
+            // prevState.data.sort((a,b)=>a[JSON.stringify(evt.target.innerHTML)] > b[JSON.stringify(evt.target.innerHTML)] ? 1 : -1)
+            console.log(temp.sort((a,b)=>(a[evt.target.innerText] > b[evt.target.innerText]) ? 1 : -1))
+            return({data:temp});
+        })
+    }
     render() { 
         return (
         <>
@@ -23,7 +32,7 @@ class TableDom extends Component {
                             this.props.headers.map((item,pos)=>{
                                 return(
                                     <td>
-                                        {item}
+                                       <a href = "#" onClick = {this.sortOnThis} value= {item} > {item}</a>
                                     </td>
                                 )
                             })
