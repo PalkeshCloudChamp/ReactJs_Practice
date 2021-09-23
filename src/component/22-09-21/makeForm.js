@@ -86,7 +86,7 @@ class MakeForm extends Component {
                         <label>Password*</label><br></br>
                         <input type='password' placeholder="Enter value" onChange={this.ValidatePassword} className = "form-control" required />
                         <div className="text-danger">{this.state.passerrorVisi ? <>Make a Strong Password</> : null}</div>
-                        <button type="submit" class="btn btn-primary form-control">Submit</button>
+                        <button type="submit" class="btn btn-primary form-control" disabled={(this.state.nameErrorVisi || this.state.emailerrorVisi || this.state.passerrorVisi)}>Submit</button>
                     </div>
                 </form>
             </div>
