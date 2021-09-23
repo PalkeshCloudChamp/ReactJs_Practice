@@ -78,15 +78,15 @@ class MakeForm extends Component {
                 <form className='card-body'>
                     <div className='form-group mb-3'>
                         <label>UserName*</label><br></br>
-                        <input type='text' placeholder="Enter value" onChange={this.validateUserName} value={this.state.name} required /><br></br>
+                        <input type='text' placeholder="Enter value" className='form-control' onChange={this.validateUserName} value={this.state.name} required />
                         <div className="text-danger">{this.state.nameErrorVisi ? <>Minimum size of Name (5)</> : null}</div>
                         <label>Email*</label><br></br>
-                        <input type='email' placeholder="Enter value" onChange={this.ValidateEmail} required /><br></br>
+                        <input type='email' placeholder="Enter value" className='form-control' onChange={this.ValidateEmail} required />
                         <div className="text-danger">{this.state.emailerrorVisi ? <>Write Correct Email Address.</> : null}</div>
                         <label>Password*</label><br></br>
-                        <input type='password' placeholder="Enter value" onChange={this.ValidatePassword} className = "form-control pwd"required /><br></br>
+                        <input type='password' placeholder="Enter value" onChange={this.ValidatePassword} className = "form-control" required />
                         <div className="text-danger">{this.state.passerrorVisi ? <>Make a Strong Password</> : null}</div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary form-control">Submit</button>
                     </div>
                 </form>
             </div>

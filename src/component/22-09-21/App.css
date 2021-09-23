@@ -10,3 +10,7 @@ label{
     padding-right: 100%;
     font-weight: 1000;
 }
+.text-danger{
+    font-size: small;
+    text-align: left;
+}
