@@ -3,11 +3,14 @@ import React,{Component} from "react";
 class TableDom extends Component {
         state = { 
             data : this.props.body,
+            dataCopy : this.props.body,
             headers : this.props.headers,
             selectedId : "",
             selectedName : "",
             selectedManu: "",
-            selectedPrice : ""
+            selectedPrice : "",
+            pagingArr : ['1'],
+            pageSize : this.props.body.length,
          }
 
     deleteEle = evt =>{
@@ -35,9 +38,45 @@ class TableDom extends Component {
         this.setState({selectedPrice : items.Price})
     }
 
+updatePagingArr = evt =>{
+    let temp = []
+    
+    for(let i =1 ; i <= Math.ceil(this.state.dataCopy.length/evt.target.value) ; i++)
+    {
+        temp.push(i)
+    }
+    this.setState({pagingArr : temp,pageSize : evt.target.value});
+}
+
+changeDataValue = evt =>{
+    // evt.target.innerText
+    let temp = []
+    let strInd = (parseInt(evt.target.innerText) - 1)*(parseInt(this.state.pageSize))
+    console.log(parseInt(this.state.pageSize))
+    for(let i =  strInd; i <strInd + parseInt(this.state.pageSize);i++ ){
+        if(this.state.dataCopy[i] === undefined)
+        {
+            break
+        }
+        temp.push(this.state.dataCopy[i])
+    }
+    console.log(temp);  
+    this.setState({data : temp});
+}
     render() { 
         return (
         <>
+        <div>
+            {/* Pagination Block */}
+            Enter the number of Rows in one Page:- 
+            <input type='number' placeholder='Enter table size' min='1' max = {this.state.dataCopy.length} onChange={this.updatePagingArr}></input><br/>
+                {
+                this.state.pagingArr.map((item,pos)=>{
+                    return(<li><a href="#" className="page-item" onClick={this.changeDataValue}>{item}</a></li>)
+                })
+                }
+            
+        </div>
                 <table className="table table-striped">
                     <thead>
                         {
