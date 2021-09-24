@@ -11,6 +11,8 @@ class TableDom extends Component {
             selectedPrice : "",
             pagingArr : ['1'],
             pageSize : this.props.body.length,
+            showPage :  this.props.showPagi === undefined?true : this.props.showPagi===undefined,
+            showDelete : this.props.showDelete===undefined?true : this.props.showDelete===undefined,
          }
 
     deleteEle = evt =>{
@@ -64,8 +66,9 @@ changeDataValue = evt =>{
     this.setState({data : temp});
 }
     render() { 
+        console.log(this.props.showDelete)
         return (
-        <>
+        <>{ this.state.showPagi?
         <div>
             {/* Pagination Block */}
             Enter the number of Rows in one Page:- 
@@ -78,7 +81,7 @@ changeDataValue = evt =>{
                 
                 }
             
-        </div>
+        </div> : null}
                 <table className="table table-striped">
                     <thead>
                         {
@@ -90,7 +93,7 @@ changeDataValue = evt =>{
                                 )
                             })
                         }
-                        <td>Delete</td>
+                        {this.state.showDelete?<td>Delete</td>:null}
                     </thead>
                     <tbody>
                         {
@@ -102,7 +105,7 @@ changeDataValue = evt =>{
                                         )
                                     }
                                     )}
-                                    <button value={item['ProductId']} onClick={this.deleteEle}>Delete</button>
+                                    {this.state.showDelete ? <button value={item['ProductId']} onClick={this.deleteEle}>Delete</button> : null}
                                     </tr>
                                 )
                             }) 
