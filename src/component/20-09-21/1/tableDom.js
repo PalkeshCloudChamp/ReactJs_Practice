@@ -70,10 +70,12 @@ changeDataValue = evt =>{
             {/* Pagination Block */}
             Enter the number of Rows in one Page:- 
             <input type='number' placeholder='Enter table size' min='1' max = {this.state.dataCopy.length} onChange={this.updatePagingArr}></input><br/>
-                {
+            {
                 this.state.pagingArr.map((item,pos)=>{
-                    return(<li><a href="#" className="page-item" onClick={this.changeDataValue}>{item}</a></li>)
-                })
+                    
+                    return(<li style={{display:"inline-block"}}><ul className='pagination' style={{display:"inline-block",padding : "10px"}}><a href="#" style={{display:"inline-block"}} className="page-item" onClick={this.changeDataValue}>  {item}   </a></ul></li>)
+                    })
+                
                 }
             
         </div>
