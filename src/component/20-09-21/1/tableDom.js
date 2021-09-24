@@ -11,7 +11,7 @@ class TableDom extends Component {
             selectedPrice : "",
             pagingArr : ['1'],
             pageSize : this.props.body.length,
-            showPage :  this.props.showPagi === undefined?true : this.props.showPagi,
+            showPagi :  this.props.showPagi===undefined?true : this.props.showPagi,
             showDelete : this.props.showDelete===undefined?true : this.props.showDelete,
          }
 
@@ -66,9 +66,9 @@ changeDataValue = evt =>{
     this.setState({data : temp});
 }
     render() { 
-        console.log(this.props.showDelete)
+        console.log(this.props.showPagi)
         return (
-        <>{ this.state.showPagi?
+        <>{ this.state.showPagi ?
         <div>
             {/* Pagination Block */}
             Enter the number of Rows in one Page:- 
