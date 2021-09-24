@@ -11,8 +11,8 @@ class TableDom extends Component {
             selectedPrice : "",
             pagingArr : ['1'],
             pageSize : this.props.body.length,
-            showPage :  this.props.showPagi === undefined?true : this.props.showPagi===undefined,
-            showDelete : this.props.showDelete===undefined?true : this.props.showDelete===undefined,
+            showPage :  this.props.showPagi === undefined?true : this.props.showPagi,
+            showDelete : this.props.showDelete===undefined?true : this.props.showDelete,
          }
 
     deleteEle = evt =>{

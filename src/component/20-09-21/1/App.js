@@ -27,7 +27,7 @@ render(){
     return(
         <div>
             <center>
-                <TableDom headers = {this.state.headers} body={this.state.data} showPagi = {false}/>
+                <TableDom headers = {this.state.headers} body={this.state.data}/>
             </center>
         </div>
     )
